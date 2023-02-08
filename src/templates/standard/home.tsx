@@ -1,10 +1,19 @@
 import React from "react";
+import { IPage } from "../../types/standard";
 
-const IndexPage = () => {
+interface HomeProps {
+  pageContext: {
+    page: IPage;
+    pages: IPage[];
+  };
+}
+
+const HomePage: React.FC<HomeProps> = ({ pageContext }) => {
+  const { page, pages } = pageContext;
   return (
     <>
-      <div>test</div>
+      <div>{page.title}</div>
     </>
   );
 };
-export default IndexPage;
+export default HomePage;

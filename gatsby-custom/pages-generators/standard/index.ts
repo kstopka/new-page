@@ -5,7 +5,8 @@ import { slash } from "gatsby-core-utils";
 import { IPage } from "../../../src/types/standard";
 
 class StandardPagesGeneratorClass {
-  home = (createPage: Actions["createPage"], pages: IPage[]) => {
+  home = (createPage: Actions["createPage"], pages: IPage[] | undefined) => {
+    if (!pages) return console.log("pages us undefined in create page home");
     const homePage = path.resolve(`./src/templates/standard/home.tsx`);
     const homeData = pages.find((el) => el.slug === "home");
 
@@ -13,7 +14,7 @@ class StandardPagesGeneratorClass {
 
     createPage({
       // will be the url for the page
-      path: `/`,
+      path: `/home`,
       // specify the component template of your choice
       component: slash(homePage),
       // In the ^template's GraphQL query, 'id' will be available

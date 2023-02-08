@@ -1,8 +1,14 @@
 import { CreatePagesArgs } from "gatsby";
+import { ISiteMetadataData } from "./types";
 
 class CustomResourceClass {
   getSiteMetadata = async (graphql: CreatePagesArgs[`graphql`]) => {
-    const { data } = await graphql(`
+    const {
+      data,
+    }: {
+      errors?: any;
+      data?: ISiteMetadataData;
+    } = await graphql(`
       query {
         wp {
           generalSettings {
@@ -11,18 +17,11 @@ class CustomResourceClass {
             title
             url
           }
-          seo {
-            social {
-              facebook {
-                url
-              }
-            }
-          }
         }
       }
     `);
 
-    return data;
+    return data?.wp.generalSettings;
   };
 }
 

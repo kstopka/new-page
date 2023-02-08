@@ -19,8 +19,8 @@ export const createPages: GatsbyNode["createPages"] = async ({
   console.log(siteMetadata);
   fs.writeFileSync("siteMetadata.json", JSON.stringify(siteMetadata), "utf8");
 
-  let pages = await (await StandardResource.getPages(graphql)).data;
+  let pages = await StandardResource.getPages(graphql);
   // pages = addMetadata(pages, siteMetadata);
 
-  // StandardPagesGenerator.home(createPage, pages);
+  StandardPagesGenerator.home(createPage, pages);
 };
