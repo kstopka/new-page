@@ -19,7 +19,7 @@ const IndexPage = () => {
   console.log(data);
 
   const { title } = data.allWpPage.nodes.find(
-    (el: { slug: string }) => el.slug === "home"
+    (el: { slug: string }) => el.slug === "terminy-przejazdow"
   );
 
   return (

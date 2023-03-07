@@ -6,7 +6,7 @@ import { IPage } from "../../../src/types/standard";
 
 class StandardPagesGeneratorClass {
   home = (createPage: Actions["createPage"], pages: IPage[] | undefined) => {
-    if (!pages) return console.log("pages us undefined in create page home");
+    if (!pages) return console.log("pages undefined in create page home");
     const homePage = path.resolve(`./src/templates/standard/home.tsx`);
     const homeData = pages.find((el) => el.slug === "home");
 
